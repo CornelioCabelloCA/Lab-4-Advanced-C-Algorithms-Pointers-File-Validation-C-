@@ -1,0 +1,1 @@
+# Lab-4-Advanced-C-Algorithms-Pointers-File-Validation-C-
