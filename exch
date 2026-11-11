@@ -1,0 +1,45 @@
+#include <stdio.h>
+
+void curr_change(float amCur1, float amMax, float excRate,
+                 float *amCur2, float *leftOver)
+{
+    if (amCur1 > amMax)
+    {
+        *amCur2 = amMax * excRate;
+        *leftOver = amCur1 - amMax;
+    }
+    else
+    {
+        *amCur2 = amCur1 * excRate;
+        *leftOver = 0.0;
+    }
+}
+
+int main(void)
+{
+    char currency1[] = "USD";
+    char currency2[] = "AED";
+
+    float amount;
+    float convertedAmount;
+    float leftoverAmount;
+
+    printf("Enter amount in %s: ", currency1);
+
+    if (scanf("%f", &amount) != 1 || amount < 0.0)
+    {
+        printf("Invalid amount.\n");
+        return 1;
+    }
+
+    curr_change(amount, 300.0, 3.67,
+                &convertedAmount, &leftoverAmount);
+
+    printf("Converted amount: %.2f %s\n",
+           convertedAmount, currency2);
+
+    printf("Leftover amount: %.2f %s\n",
+           leftoverAmount, currency1);
+
+    return 0;
+}
